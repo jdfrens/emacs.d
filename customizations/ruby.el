@@ -2,6 +2,13 @@
 
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
 
+(require 'ruby-tools)
+(require 'ruby-electric)
+(ruby-electric-mode t)
+(require 'ruby-block)
+(ruby-block-mode t)
+;; (require 'rails)
+
 (setq ruby-insert-encoding-magic-comment nil)
 
 (defun my-ruby-mode-hook ()
@@ -9,6 +16,8 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))
   )
+
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
 ;; rbenv
 (setenv "PATH"
@@ -25,4 +34,5 @@
 (mapc
  (lambda (pattern)
    (add-to-list 'auto-mode-alist `(,pattern . ruby-mode)))
- '("\\.rb$" "Gemfile$" "Rakefile$" "\\.rake$"))
+ '("\\.rb\\'"  "\\.rake\\'" "\\.gemspec\\'" "\\.ru\\'"
+   "Gemfile\\'" "Rakefile\\'" "Guardfile\\'"))

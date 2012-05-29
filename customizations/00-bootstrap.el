@@ -1,5 +1,7 @@
 ;; ---- Global Defaults and Preferences
 
+(setq inhibit-startup-message t)
+
 ;; ---- key bindings
 
 ;; NONSTANDARD, but incredibly useful
@@ -24,12 +26,16 @@
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really kill Emacs? "))
             kill-emacs-query-functions))
+(fset 'yes-or-no-p (symbol-function 'y-or-n-p))
 
 (global-auto-revert-mode t)
+
+;; parentheses
 (show-paren-mode 1)
-(setq inhibit-startup-message t)
-(fset 'yes-or-no-p (symbol-function 'y-or-n-p))
-(linum-mode 1)
+
+;; line numbers in gutter
+(setq linum-format "%4d ")
+(global-linum-mode 1)
 
 ;; disable dangerous commands
 (put 'capitalize-region 'disabled t)
@@ -39,7 +45,7 @@
 (put 'eval-expression   'disabled nil)
 (put 'zap-to-char       'disabled nil)
 
-;; ---- whitespace handling
+;; whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
