@@ -7,7 +7,6 @@
 (ruby-electric-mode t)
 (require 'ruby-block)
 (ruby-block-mode t)
-;; (require 'rails)
 
 (setq ruby-insert-encoding-magic-comment nil)
 
