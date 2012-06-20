@@ -16,12 +16,6 @@
   (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))
   )
 
-(defadvice compile (around set-default-directory (command &optional comint))
-  "Use the textmate default directory"
-  (let ((default-directory (textmate-project-root)))
-    ad-do-it))
-(ad-activate 'compile)
-
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
 ;; rbenv
