@@ -14,8 +14,19 @@
   (flymake-ruby-load)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))
+  (local-set-key (kbd "C-c a r")
+		 (lambda () (interactive)
+		   (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=" 1 1 nil)))
+  (local-set-key (kbd "C-c t a")
+		 (lambda () (interactive)
+		   (run-rails-tests)))
+  (local-set-key (kbd "C-c t f")
+		 (lambda () (interactive)
+		   (run-rails-file-tests)))
+  (local-set-key (kbd "C-c t g")
+		 (lambda () (interactive)
+		   (run-rails-group-tests)))
   )
-
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
 (defun bundle-exec-rake-test-command (&optional test-group args)
@@ -75,5 +86,5 @@
 (mapc
  (lambda (pattern)
    (add-to-list 'auto-mode-alist `(,pattern . ruby-mode)))
- '("\\.rb\\'"  "\\.rake\\'" "\\.gemspec\\'" "\\.ru\\'"
+ '("\\.rb\\'"  "\\.rake\\'" "\\.gemspec\\'" "\\.ru\\'" "\\.god\\'"
    "Gemfile\\'" "Rakefile\\'" "Guardfile\\'"))
