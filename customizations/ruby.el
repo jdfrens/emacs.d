@@ -86,5 +86,5 @@
 (mapc
  (lambda (pattern)
    (add-to-list 'auto-mode-alist `(,pattern . ruby-mode)))
- '("\\.rb\\'"  "\\.rake\\'" "\\.gemspec\\'" "\\.ru\\'" "\\.god\\'"
+ '("\\.rb\\'"  "\\.rake\\'" "\\.gemspec\\'" "\\.ru\\'" "\\.god\\'" "\\.rabl\\'"
    "Gemfile\\'" "Rakefile\\'" "Guardfile\\'"))
