@@ -4,3 +4,4 @@ icicles/*
 url/*
 tramp
 *.elc
+emacs-customizations.el
