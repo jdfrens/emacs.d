@@ -58,5 +58,9 @@
 (load custom-file)
 
 ;; executable path
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-(setq exec-path (append '("/usr/local/bin") exec-path))
+(setenv "PATH"
+	(concat "/usr/local/Cellar/rbenv/0.3.0/shims:/usr/local/Cellar/rbenv/0.3.0/bin:/usr/local/bin:" (getenv "PATH")))
+(setq exec-path
+      (append
+       '("/usr/local/Cellar/rbenv/0.3.0/shims" "/usr/local/Cellar/rbenv/0.3.0/bin" "/usr/local/bin")
+       exec-path))
