@@ -8,3 +8,7 @@
 ;; ---- Textmate mode
 (require 'textmate)
 (textmate-mode)
+
+;; ---- dired
+(setq ls-lisp-use-insert-directory-program t)
+(setq insert-directory-program "gls")
