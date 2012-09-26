@@ -2,11 +2,12 @@
 
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
 
-(require 'ruby-tools)
-(require 'ruby-electric)
-(ruby-electric-mode t)
-(require 'ruby-block)
-(ruby-block-mode t)
+;; (require 'ruby-tools)
+;; (require 'ruby-electric)
+;; (ruby-electric-mode t)
+;; (require 'ruby-block)
+;; (ruby-block-mode t)
+(require 'ruby-compilation)
 
 (setq ruby-insert-encoding-magic-comment nil)
 
