@@ -74,13 +74,16 @@
 ;; rbenv
 (setenv "PATH"
         (concat
+         (getenv "PATH")
          (getenv "HOME") "/.rbenv/shims:"
          (getenv "HOME") "/.rbenv/bin:"
-         (getenv "PATH")))
+	 ))
 (setq exec-path
-      (cons (concat (getenv "HOME") "/.rbenv/shims")
-            (cons (concat (getenv "HOME") "/.rbenv/bin")
-                  exec-path)))
+      (append
+       exec-path
+       (list (concat (getenv "HOME") "/.rbenv/shims")
+	     (concat (getenv "HOME") "/.rbenv/bin"))
+       ))
 
 ;; auto mode
 (mapc
