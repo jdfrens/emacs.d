@@ -1,3 +1,5 @@
+(set-face-attribute 'default nil :font "SourceCodePro-Regular")
+
 ;; ---- Global Defaults and Preferences
 
 (setq inhibit-startup-message t)
