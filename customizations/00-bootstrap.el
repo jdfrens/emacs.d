@@ -54,15 +54,20 @@
 ;; backup files hidden away
 (setq backup-directory-alist
       '(("." . "~/.emacs.d/backup")))
+;; clean out old backup files
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files "~/.emacs.d/backup" t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file))))
 
 ;; file for in-app settings
 (setq custom-file "~/.emacs.d/emacs-customizations.el")
 (load custom-file)
 
 ;; executable path
-(setenv "PATH"
-	(concat "/usr/local/Cellar/rbenv/0.3.0/shims:/usr/local/Cellar/rbenv/0.3.0/bin:/usr/local/bin:" (getenv "PATH")))
-(setq exec-path
-      (append
-       '("/usr/local/Cellar/rbenv/0.3.0/shims" "/usr/local/Cellar/rbenv/0.3.0/bin" "/usr/local/bin")
-       exec-path))
+(exec-path-from-shell-initialize)
