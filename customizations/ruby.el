@@ -2,6 +2,8 @@
 
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
 
+(setq ruby-deep-indent-paren nil)
+
 ;; (require 'ruby-tools)
 ;; (require 'ruby-electric)
 ;; (ruby-electric-mode t)
@@ -85,6 +87,24 @@
        (list (concat (getenv "HOME") "/.rbenv/shims")
 	     (concat (getenv "HOME") "/.rbenv/bin"))
        ))
+
+;; https://gist.github.com/fujin/5173680
+;; don't indent so much!
+(setq ruby-deep-indent-paren nil)
+(defadvice ruby-indent-line (after unindent-closing-paren activate)
+  (let ((column (current-column))
+        indent offset)
+    (save-excursion
+      (back-to-indentation)
+      (let ((state (syntax-ppss)))
+        (setq offset (- column (current-column)))
+        (when (and (eq (char-after) ?\))
+                   (not (zerop (car state))))
+          (goto-char (cadr state))
+          (setq indent (current-indentation)))))
+    (when indent
+      (indent-line-to indent)
+      (when (> offset 0) (forward-char offset)))))
 
 ;; auto mode
 (mapc
