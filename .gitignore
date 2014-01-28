@@ -5,3 +5,5 @@ url/*
 tramp
 *.elc
 emacs-customizations.el
+.mc-lists.el
+.places
