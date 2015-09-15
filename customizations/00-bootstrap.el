@@ -1,4 +1,82 @@
-(set-face-attribute 'default nil :font "SourceCodePro-Regular")
+(require 'cl)
+
+;; --- Make sure the required packages are installed
+
+(defvar packages-list
+  '(textmate
+
+    ace-jump-mode
+    clojure-mode
+    clojure-test-mode
+    coffee-mode
+    css-mode
+    elixir-mode
+    haml-mode
+    haskell-mode
+    markdown-mode
+    nyan-mode
+    rspec-mode
+    ruby-mode
+    rust-mode
+    sass-mode
+    scss-mode
+    yaml-mode
+
+    yasnippet
+    clojure-snippets
+    elixir-yasnippets
+
+    flymake
+    flymake-easy
+    flymake-elixir
+    flymake-ruby
+
+    inf-ruby
+    rinari
+    ruby-block
+    ruby-compilation
+    ruby-electric
+    ruby-tools
+
+    ack-and-a-half
+    auctex
+    auctex-latexmk
+    autopair
+    buffer-move
+    cider
+    dash
+    dired+
+    elein
+    epl
+    ess
+    ess-smart-underscore
+    exec-path-from-shell
+    expand-region
+    findr
+    iedit
+    inflections
+    jump
+    mark-multiple
+    multiple-cursors
+    nrepl
+    pkg-info
+    s
+    volatile-highlights)
+  "List of packages needs to be installed at launch")
+
+(defun has-package-not-installed ()
+  (loop for p in packages-list
+        when (not (package-installed-p p)) do (return t)
+        finally (return nil)))
+(when (has-package-not-installed)
+  ;; Check for new packages (package versions)
+  (message "%s" "Get latest versions of all packages...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; Install the missing packages
+  (dolist (p packages-list)
+    (when (not (package-installed-p p))
+      (package-install p))))
 
 ;; ---- Global Defaults and Preferences
 
@@ -32,6 +110,9 @@
 
 (global-auto-revert-mode t)
 
+;; Otherwise starts in root directory
+(setq command-line-default-directory "~/")
+
 ;; parentheses
 (show-paren-mode 1)
 
@@ -60,7 +141,7 @@
       (current (float-time (current-time))))
   (dolist (file (directory-files "~/.emacs.d/backup" t))
     (when (and (backup-file-name-p file)
-               (> (- current (float-time (fifth (file-attributes file))))
+               (> (- current (float-time (nth 5 (file-attributes file))))
                   week))
       (message "%s" file)
       (delete-file file))))
