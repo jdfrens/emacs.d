@@ -3,6 +3,8 @@
   "setup the windows I like for development"
   (interactive)
   (set-frame-size (selected-frame) 200 56)
+  (neotree)
+  (other-window -1)
   (split-window-right)
   (split-window-below)
   )
