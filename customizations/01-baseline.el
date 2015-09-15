@@ -12,3 +12,6 @@
 ;; ---- dired
 (setq ls-lisp-use-insert-directory-program t)
 (setq insert-directory-program "gls")
+
+;; --- tabs
+(setq-default indent-tabs-mode nil)
