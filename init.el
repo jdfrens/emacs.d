@@ -10,7 +10,6 @@
 ;; ---- the load path
 
 (add-to-list 'load-path "~/.emacs.d/icicles/")
-(add-to-list 'load-path "~/.emacs.d/")
 
 ;; ---- use emacs server
 (require 'server)
