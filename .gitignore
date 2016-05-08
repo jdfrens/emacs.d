@@ -7,3 +7,5 @@ tramp
 emacs-customizations.el
 .mc-lists.el
 .places
+projectile-bookmarks.eld
+projectile.cache
