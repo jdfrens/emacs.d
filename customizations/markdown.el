@@ -4,9 +4,8 @@
   "Major mode for editing Markdown files" t)
 
 (defun my-markdown-mode-hook ()
-  (auto-fill-mode "off")
-  (longlines-mode)
-  (longlines-show-hard-newlines)
+  (auto-fill-mode -1)
+  (visual-line-mode t)
   )
 
 (add-hook 'markdown-mode-hook 'my-markdown-mode-hook)

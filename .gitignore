@@ -9,3 +9,4 @@ emacs-customizations.el
 .places
 projectile-bookmarks.eld
 projectile.cache
+network-security.data

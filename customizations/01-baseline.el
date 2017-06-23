@@ -15,3 +15,5 @@
 
 ;; --- tabs
 (setq-default indent-tabs-mode nil)
+;; hack so that tabs don't end up in my Elixir code
+(add-hook 'before-save-hook (lambda () (untabify (point-min) (point-max))))

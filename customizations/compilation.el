@@ -6,3 +6,5 @@
   (let ((default-directory (textmate-project-root)))
     ad-do-it))
 (ad-activate 'compile)
+
+(require 'recompile-on-save)

@@ -39,8 +39,6 @@
     ruby-tools
 
     ack-and-a-half
-    auctex
-    auctex-latexmk
     autopair
     buffer-move
     cider
@@ -48,8 +46,6 @@
     dired+
     elein
     epl
-    ess
-    ess-smart-underscore
     exec-path-from-shell
     expand-region
     findr
