@@ -33,3 +33,5 @@
   (lambda (file)
     (load (substring file 0 -3))))
  (file-expand-wildcards "~/.emacs.d/customizations/*.el"))
+
+(load-theme 'solarized-light t)
