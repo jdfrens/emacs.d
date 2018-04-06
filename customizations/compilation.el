@@ -7,4 +7,4 @@
     ad-do-it))
 (ad-activate 'compile)
 
-(require 'recompile-on-save)
+;; (require 'recompile-on-save)
