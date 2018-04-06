@@ -1,3 +1,9 @@
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode nil)
+        (setq tab-width 4)
+        (setq python-indent-offset 4)))
+
 ;; ---- Ruby
 
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
@@ -18,17 +24,17 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))
   (local-set-key (kbd "C-c a r")
-		 (lambda () (interactive)
-		   (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=" 1 1 nil)))
+                 (lambda () (interactive)
+                   (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=" 1 1 nil)))
   (local-set-key (kbd "C-c t a")
-		 (lambda () (interactive)
-		   (run-rails-tests)))
+                 (lambda () (interactive)
+                   (run-rails-tests)))
   (local-set-key (kbd "C-c t f")
-		 (lambda () (interactive)
-		   (run-rails-file-tests)))
+                 (lambda () (interactive)
+                   (run-rails-file-tests)))
   (local-set-key (kbd "C-c t g")
-		 (lambda () (interactive)
-		   (run-rails-group-tests)))
+                 (lambda () (interactive)
+                   (run-rails-group-tests)))
   )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
@@ -80,12 +86,12 @@
          (getenv "PATH")
          (getenv "HOME") "/.rbenv/shims:"
          (getenv "HOME") "/.rbenv/bin:"
-	 ))
+         ))
 (setq exec-path
       (append
        exec-path
        (list (concat (getenv "HOME") "/.rbenv/shims")
-	     (concat (getenv "HOME") "/.rbenv/bin"))
+             (concat (getenv "HOME") "/.rbenv/bin"))
        ))
 
 ;; https://gist.github.com/fujin/5173680
