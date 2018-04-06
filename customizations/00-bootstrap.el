@@ -5,6 +5,7 @@
 (defvar packages-list
   '(textmate
 
+    alchemist
     ace-jump-mode
     clojure-mode
     clojure-test-mode
@@ -38,7 +39,6 @@
     ruby-electric
     ruby-tools
 
-    ack-and-a-half
     autopair
     buffer-move
     cider
@@ -52,10 +52,12 @@
     iedit
     inflections
     jump
+    magit
     mark-multiple
     multiple-cursors
-    nrepl
+    neotree
     pkg-info
+    projectile
     s
     volatile-highlights)
   "List of packages needs to be installed at launch")
